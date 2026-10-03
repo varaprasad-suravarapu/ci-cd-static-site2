@@ -1,0 +1,21 @@
+name: Static Site 2 CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: npx --yes htmlhint "*.html"
